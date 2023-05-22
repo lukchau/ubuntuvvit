@@ -5,20 +5,18 @@ import datetime
 conn = psycopg2.connect(host='localhost',
                         database="tgbot",
                         user="postgres",
-                        password="L1220L")
+                        password="MY_PASSWORD")
 
 cursor = conn.cursor()
 
-token = '6067835469:AAFL_VDl0S5dMhlXmAhaQHx7loY79tuXvtI'
+token = 'MY_API'
 
 bot = telebot.TeleBot(token)
 
 today = datetime.datetime.today()
 week_number = today.isocalendar()[1]
 
-even_week = week_number % 2 == 0
-
-if even_week:
+if week_number % 2 == 0:
     week_num = 2
 else:
     week_num = 1
@@ -68,7 +66,7 @@ def get_next_week(week_num):
 
 @bot.message_handler(commands=['currentweek'])
 def handle_timetable(message):
-    if even_week:
+    if week_number % 2 == 0:
         week_num = 2
     else:
         week_num = 1
@@ -78,7 +76,7 @@ def handle_timetable(message):
 
 @bot.message_handler(commands=['week'])
 def handle_timetable(message):
-    if even_week:
+    if week_number % 2 == 0:
         week_str = 'Сейчас чётная неделя'
     else:
         week_str = 'Сейчас нечётная неделя'
@@ -87,7 +85,7 @@ def handle_timetable(message):
 
 @bot.message_handler(commands=['nextweek'])
 def handle_timetable(message):
-    if even_week:
+    if week_number % 2 == 0:
         week_num = 1
     else:
         week_num = 2
@@ -98,7 +96,7 @@ def handle_timetable(message):
 @bot.message_handler(commands=['Monday'])
 def monday(message):
     day = 'Понедельник'
-    if even_week:
+    if week_number % 2 == 0:
         week_num = 2
     else:
         week_num = 1
@@ -109,7 +107,7 @@ def monday(message):
 @bot.message_handler(commands=['Tuesday'])
 def handle_timetable(message):
     day = 'Вторник'
-    if even_week:
+    if week_number % 2 == 0:
         week_num = 2
     else:
         week_num = 1
@@ -120,7 +118,7 @@ def handle_timetable(message):
 @bot.message_handler(commands=['Wednesday'])
 def handle_timetable(message):
     day = 'Среда'
-    if even_week:
+    if week_number % 2 == 0:
         week_num = 2
     else:
         week_num = 1
@@ -131,7 +129,7 @@ def handle_timetable(message):
 @bot.message_handler(commands=['Thursday'])
 def handle_timetable(message):
     day = 'Четверг'
-    if even_week:
+    if week_number % 2 == 0:
         week_num = 2
     else:
         week_num = 1
@@ -142,7 +140,7 @@ def handle_timetable(message):
 @bot.message_handler(commands=['Friday'])
 def handle_timetable(message):
     day = 'Пятница'
-    if even_week:
+    if week_number % 2 == 0:
         week_num = 2
     else:
         week_num = 1
