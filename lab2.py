@@ -1,7 +1,7 @@
 import requests
 
 city = 'Moscow, RU'
-appid = 'ab9e8aca0ae5fbb4bbf8ed72a70c5f9e'
+appid = 'MY_API'
 
 res = requests.get("http://api.openweathermap.org/data/2.5/weather",
 params ={'q': city, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
